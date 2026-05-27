@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Auditoría gratis de Instagram para emprendedores. 5 minutos, sin spam, diagnóstico personalizado.">
+<title>Auditoría Gratis de Instagram · Diagnóstico para emprendedores</title>
+
+<!-- Google Fonts: Inter (400, 600, 900) + Archivo Black como fallback -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;900&display=swap" rel="stylesheet">
+
+<style>
+/* =========================================================
+   VARIABLES DE DISEÑO (paleta exacta del brief)
+   ========================================================= */
+:root {
+  --cream: #F4EFE6;
+  --black: #1A1A1A;
+  --magenta: #E5195E;
+  --white: #FFFFFF;
+  --gray-soft: #8a8a8a;
+
+  --radius: 16px;
+  --transition: 200ms ease-out;
+
+  --section-padding-mobile: 48px 24px;
+  --section-padding-desktop: 120px 24px;
+}
+
+/* =========================================================
+   RESET + BASE
+   ========================================================= */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', 'Archivo Black', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--black);
+  background: var(--cream);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+h1, h2, h3 {
+  font-family: 'Inter', 'Archivo Black', sans-serif;
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+input, textarea { font-family: inherit; }
+
+/* Focus visible accesible */
+:focus-visible {
+  outline: 3px solid var(--magenta);
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   LAYOUT GENERAL — contenedor max 720px en desktop
+   ========================================================= */
+.container {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+section {
+  padding: var(--section-padding-mobile);
+}
+
+@media (min-width: 768px) {
+  section { padding: var(--section-padding-desktop); }
+}
+
+/* =========================================================
+   BOTONES
+   ========================================================= */
+.btn-primary {
+  display: inline-block;
+  background: var(--magenta);
+  color: var(--cream);
+  font-weight: 900;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+  padding: 20px 32px;
+  border-radius: var(--radius);
+  width: 100%;
+  text-align: center;
+  transition: transform var(--transition), background var(--transition);
+}
+.btn-primary:hover { transform: scale(1.02); background: #c8154f; }
+.btn-primary:active { transform: scale(0.98); }
+.btn-primary:disabled {
+  background: #e0d8cb;
+  color: #a59f93;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-secondary {
+  display: inline-block;
+  background: var(--cream);
+  color: var(--black);
+  font-weight: 900;
+  font-size: 18px;
+  padding: 20px 32px;
+  border-radius: var(--radius);
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  transition: transform var(--transition);
+}
+.btn-secondary:hover { transform: scale(1.02); }
+.btn-secondary:active { transform: scale(0.98); }
+
+.btn-back {
+  background: none;
+  color: var(--black);
+  font-size: 16px;
+  padding: 12px 0;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  opacity: 0.7;
+  transition: opacity var(--transition);
+}
+.btn-back:hover { opacity: 1; }
+
+@media (min-width: 768px) {
+  .btn-primary, .btn-secondary { width: auto; min-width: 320px; font-size: 20px; }
+}
+
+/* =========================================================
+   SECCIÓN 1 — HERO
+   ========================================================= */
+.hero {
+  background: var(--cream);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+}
+
+.hero-pretitle {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--magenta);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 32px;
+}
+
+.hero h1 {
+  font-size: 42px;
+  margin-bottom: 32px;
+  letter-spacing: -0.03em;
+}
+.hero h1 .accent { color: var(--magenta); }
+
+.hero-subtitle {
+  font-size: 18px;
+  max-width: 480px;
+  margin-bottom: 40px;
+  color: var(--black);
+  opacity: 0.85;
+}
+
+.hero-micro {
+  font-size: 14px;
+  color: var(--gray-soft);
+  margin-top: 16px;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .hero h1 { font-size: 72px; }
+  .hero-subtitle { font-size: 20px; }
+  .hero-micro { font-size: 16px; text-align: left; }
+}
+
+/* Animación de entrada del hero */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 700ms ease-out forwards;
+}
+.fade-in-up.delay-1 { animation-delay: 100ms; }
+.fade-in-up.delay-2 { animation-delay: 250ms; }
+.fade-in-up.delay-3 { animation-delay: 400ms; }
+.fade-in-up.delay-4 { animation-delay: 550ms; }
+
+@keyframes fadeInUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================================
+   SECCIÓN 2 — VALIDACIÓN EMOCIONAL
+   ========================================================= */
+.validation {
+  background: var(--white);
+}
+
+.validation h2 {
+  font-size: 32px;
+  margin-bottom: 48px;
+}
+
+.validation-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 64px;
+}
+
+.validation-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  background: var(--cream);
+  border-radius: var(--radius);
+}
+
+.validation-emoji {
+  font-size: 32px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.validation-text {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.validation-close {
+  font-size: 24px;
+  font-weight: 900;
+  text-align: center;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  padding: 32px 0;
+  border-top: 2px solid var(--black);
+  border-bottom: 2px solid var(--black);
+}
+
+@media (min-width: 768px) {
+  .validation h2 { font-size: 48px; }
+  .validation-text { font-size: 20px; }
+  .validation-close { font-size: 36px; }
+  .validation-emoji { font-size: 40px; }
+}
+
+/* =========================================================
+   SECCIÓN 3 — FORMULARIO DIAGNÓSTICO
+   ========================================================= */
+.form-section {
+  background: var(--cream);
+  min-height: 100vh;
+}
+
+/* Progress bar magenta */
+.progress-wrapper {
+  position: sticky;
+  top: 0;
+  background: var(--cream);
+  padding: 20px 0 24px;
+  z-index: 10;
+  margin-bottom: 16px;
+}
+
+.progress-track {
+  width: 100%;
+  height: 3px;
+  background: rgba(26, 26, 26, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--magenta);
+  width: 0%;
+  transition: width 400ms ease-out;
+}
+
+.progress-label {
+  font-size: 14px;
+  color: var(--gray-soft);
+  margin-top: 12px;
+  font-weight: 600;
+}
+
+/* Resume prompt */
+.resume-prompt {
+  background: var(--white);
+  border: 2px solid var(--black);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-bottom: 32px;
+}
+.resume-prompt p { margin-bottom: 16px; font-weight: 600; }
+.resume-prompt-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
+.resume-prompt-buttons button {
+  flex: 1;
+  min-width: 140px;
+  padding: 14px 20px;
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 12px;
+  transition: transform var(--transition);
+}
+.resume-yes {
+  background: var(--magenta);
+  color: var(--cream);
+}
+.resume-no {
+  background: transparent;
+  color: var(--black);
+  border: 2px solid var(--black);
+}
+.resume-yes:hover, .resume-no:hover { transform: scale(1.02); }
+
+/* Step wizard */
+.steps {
+  position: relative;
+  overflow: hidden;
+}
+
+.step {
+  display: none;
+  animation: slideIn 400ms ease-out;
+}
+.step.active { display: block; }
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.step-number {
+  font-size: 14px;
+  font-weight: 900;
+  color: var(--magenta);
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+}
+
+.step h2 {
+  font-size: 28px;
+  margin-bottom: 32px;
+}
+
+@media (min-width: 768px) {
+  .step h2 { font-size: 40px; }
+  .step-number { font-size: 16px; }
+}
+
+/* Options (radio cards) */
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.option-card {
+  display: block;
+  background: var(--white);
+  border: 2px solid var(--black);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  text-align: left;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--black);
+  width: 100%;
+  transition: all var(--transition);
+  position: relative;
+}
+.option-card:hover {
+  transform: scale(1.01);
+  background: var(--cream);
+}
+.option-card.selected {
+  background: var(--magenta);
+  color: var(--cream);
+  border-color: var(--magenta);
+}
+
+/* Text inputs */
+.text-input, .textarea-input {
+  width: 100%;
+  padding: 18px 20px;
+  background: var(--white);
+  border: 2px solid var(--black);
+  border-radius: var(--radius);
+  font-size: 17px;
+  color: var(--black);
+  margin-bottom: 12px;
+  transition: border-color var(--transition);
+}
+.text-input:focus, .textarea-input:focus {
+  outline: none;
+  border-color: var(--magenta);
+}
+
+.textarea-input {
+  min-height: 120px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.char-count {
+  font-size: 14px;
+  color: var(--gray-soft);
+  text-align: right;
+  margin-bottom: 32px;
+}
+
+/* Inputs con prefijo (whatsapp, instagram) */
+.input-with-prefix {
+  display: flex;
+  align-items: stretch;
+  background: var(--white);
+  border: 2px solid var(--black);
+  border-radius: var(--radius);
+  margin-bottom: 12px;
+  transition: border-color var(--transition);
+}
+.input-with-prefix:focus-within { border-color: var(--magenta); }
+
+.input-prefix {
+  padding: 18px 16px;
+  background: var(--cream);
+  font-weight: 600;
+  color: var(--black);
+  border-right: 2px solid var(--black);
+  border-radius: 14px 0 0 14px;
+}
+.input-with-prefix input {
+  flex: 1;
+  border: none;
+  padding: 18px 20px;
+  font-size: 17px;
+  background: transparent;
+  border-radius: 0 14px 14px 0;
+}
+.input-with-prefix input:focus { outline: none; }
+
+/* Form group (pregunta 7 con múltiples inputs) */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+.form-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--black);
+  margin-bottom: 4px;
+}
+.form-label .required { color: var(--magenta); }
+.form-label .optional { color: var(--gray-soft); font-weight: 400; }
+
+.error-msg {
+  font-size: 14px;
+  color: var(--magenta);
+  font-weight: 600;
+  margin-top: 4px;
+  display: none;
+}
+.error-msg.show { display: block; }
+
+/* Navegación de pasos */
+.step-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .step-nav { flex-direction: row-reverse; justify-content: space-between; }
+  .step-nav .btn-primary { width: auto; min-width: 240px; }
+}
+
+/* =========================================================
+   LOADING STATE
+   ========================================================= */
+.loading-screen {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--cream);
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 24px;
+}
+.loading-screen.active { display: flex; }
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 4px solid rgba(229, 25, 94, 0.2);
+  border-top-color: var(--magenta);
+  border-radius: 50%;
+  animation: spin 800ms linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-text {
+  font-weight: 600;
+  color: var(--black);
+}
+
+/* =========================================================
+   SECCIÓN 4 — PANTALLA DE ÉXITO
+   ========================================================= */
+.success-section {
+  display: none;
+  background: var(--magenta);
+  color: var(--cream);
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  padding: var(--section-padding-mobile);
+}
+.success-section.active { display: flex; }
+
+@media (min-width: 768px) {
+  .success-section { padding: var(--section-padding-desktop); }
+}
+
+.success-content { width: 100%; max-width: 720px; text-align: left; }
+
+/* Check animado */
+.success-check {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 32px;
+  animation: popIn 600ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.success-check svg {
+  width: 40px;
+  height: 40px;
+  stroke: var(--magenta);
+  stroke-width: 4;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: drawCheck 600ms ease-out 400ms forwards;
+}
+
+@keyframes popIn {
+  0% { transform: scale(0); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes drawCheck {
+  to { stroke-dashoffset: 0; }
+}
+
+.success-section h2 {
+  font-size: 42px;
+  margin-bottom: 24px;
+  color: var(--cream);
+}
+
+.success-subtitle {
+  font-size: 20px;
+  margin-bottom: 40px;
+  opacity: 0.95;
+}
+
+.success-summary {
+  background: rgba(244, 239, 230, 0.15);
+  border: 2px solid var(--cream);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-bottom: 32px;
+}
+.success-summary h3 {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+  opacity: 0.8;
+}
+.summary-row {
+  margin-bottom: 16px;
+}
+.summary-row:last-child { margin-bottom: 0; }
+.summary-label {
+  font-size: 13px;
+  opacity: 0.7;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+.summary-value {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.success-footer {
+  margin-top: 32px;
+  font-size: 16px;
+  opacity: 0.9;
+}
+.success-footer a {
+  color: var(--cream);
+  font-weight: 900;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+@media (min-width: 768px) {
+  .success-section h2 { font-size: 64px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ========================================================
+     SECCIÓN 1 — HERO
+     ======================================================== -->
+<section class="hero" id="hero">
+  <div class="container">
+    <span class="hero-pretitle fade-in-up">AUDITORÍA GRATIS · 5 MINUTOS</span>
+    <h1 class="fade-in-up delay-1">
+      ¿Tu Instagram<br>
+      está <span class="accent">trabajando</span> para vos<br>
+      o vos para tu Instagram?
+    </h1>
+    <p class="hero-subtitle fade-in-up delay-2">
+      Respondé 7 preguntas y te mando un diagnóstico personalizado de tu cuenta. Sin costo. Sin embudos raros. Sin spam.
+    </p>
+    <button class="btn-primary fade-in-up delay-3" onclick="scrollToForm()" aria-label="Empezar el diagnóstico">
+      EMPEZAR EL DIAGNÓSTICO →
+    </button>
+    <p class="hero-micro fade-in-up delay-4">Tarda 5 minutos · 100% confidencial</p>
+  </div>
+</section>
+
+<!-- ========================================================
+     SECCIÓN 2 — VALIDACIÓN EMOCIONAL
+     ======================================================== -->
+<section class="validation">
+  <div class="container">
+    <h2>Esto es lo que probablemente te está pasando:</h2>
+    <ul class="validation-list">
+      <li class="validation-item">
+        <span class="validation-emoji" aria-hidden="true">😮‍💨</span>
+        <span class="validation-text">Publicás cuando podés, sin estrategia clara</span>
+      </li>
+      <li class="validation-item">
+        <span class="validation-emoji" aria-hidden="true">📉</span>
+        <span class="validation-text">Sentís que postear no te trae ventas</span>
+      </li>
+      <li class="validation-item">
+        <span class="validation-emoji" aria-hidden="true">⏰</span>
+        <span class="validation-text">Pensar contenido te quita tiempo de tu negocio</span>
+      </li>
+      <li class="validation-item">
+        <span class="validation-emoji" aria-hidden="true">🤷</span>
+        <span class="validation-text">No sabés qué está funcionando y qué no</span>
+      </li>
+    </ul>
+    <p class="validation-close">
+      Si te identificás con 2 o más,<br>esta auditoría es para vos.
+    </p>
+  </div>
+</section>
+
+<!-- ========================================================
+     SECCIÓN 3 — FORMULARIO DIAGNÓSTICO (wizard 7 pasos)
+     ======================================================== -->
+<section class="form-section" id="form-section">
+  <div class="container">
+
+    <!-- Progress bar -->
+    <div class="progress-wrapper">
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <p class="progress-label" id="progressLabel">Pregunta 1 de 7</p>
+    </div>
+
+    <!-- Prompt para retomar progreso -->
+    <div class="resume-prompt" id="resumePrompt" style="display:none;">
+      <p>👋 ¿Querés seguir donde dejaste?</p>
+      <div class="resume-prompt-buttons">
+        <button class="resume-yes" onclick="resumeProgress()">Sí, seguir</button>
+        <button class="resume-no" onclick="startOver()">Empezar de nuevo</button>
+      </div>
+    </div>
+
+    <!-- STEPS -->
+    <div class="steps" id="steps">
+
+      <!-- PREGUNTA 1 -->
+      <div class="step active" data-step="1">
+        <p class="step-number">01 / 07</p>
+        <h2>¿En qué momento estás con tu cuenta de Instagram?</h2>
+        <div class="options" role="radiogroup" aria-label="Estado de la cuenta">
+          <button class="option-card" data-value="creando">Recién la estoy creando</button>
+          <button class="option-card" data-value="menos500">Tiene menos de 500 seguidores</button>
+          <button class="option-card" data-value="500-2000">Entre 500 y 2.000 seguidores</button>
+          <button class="option-card" data-value="2000-no-vende">Más de 2.000 pero no vende</button>
+          <button class="option-card" data-value="mas5000">Más de 5.000, busco potenciarla</button>
+        </div>
+        <div class="step-nav">
+          <button class="btn-primary" disabled onclick="nextStep()">Siguiente →</button>
+        </div>
+      </div>
+
+      <!-- PREGUNTA 2 -->
+      <div class="step" data-step="2">
+        <p class="step-number">02 / 07</p>
+        <h2>¿Qué vendés/ofrecés?</h2>
+        <input
+          type="text"
+          class="text-input"
+          id="q2-input"
+          maxlength="80"
+          placeholder="Ej: clases de yoga online, productos naturales, consultoría legal..."
+          aria-label="Qué vendés u ofrecés"
+        >
+        <p class="char-count"><span id="q2-count">0</span> / 80</p>
+        <div class="step-nav">
+          <button class="btn-primary" disabled onclick="nextStep()">Siguiente →</button>
+          <button class="btn-back" onclick="prevStep()">← Atrás</button>
+        </div>
+      </div>
+
+      <!-- PREGUNTA 3 -->
+      <div class="step" data-step="3">
+        <p class="step-number">03 / 07</p>
+        <h2>¿Cuántas horas por semana le dedicás hoy a tus redes?</h2>
+        <div class="options" role="radiogroup" aria-label="Horas dedicadas">
+          <button class="option-card" data-value="cero">Cero, no llego nunca</button>
+          <button class="option-card" data-value="1-3">1 a 3 horas</button>
+          <button class="option-card" data-value="4-7">4 a 7 horas</button>
+          <button class="option-card" data-value="mas8">Más de 8 horas y siento que es demasiado</button>
+        </div>
+        <div class="step-nav">
+          <button class="btn-primary" disabled onclick="nextStep()">Siguiente →</button>
+          <button class="btn-back" onclick="prevStep()">← Atrás</button>
+        </div>
+      </div>
+
+      <!-- PREGUNTA 4 -->
+      <div class="step" data-step="4">
+        <p class="step-number">04 / 07</p>
+        <h2>¿Cuál es tu mayor frustración con Instagram hoy?</h2>
+        <div class="options" role="radiogroup" aria-label="Mayor frustración">
+          <button class="option-card" data-value="no-se-postear">No sé qué postear</button>
+          <button class="option-card" data-value="no-me-ven">Posteo pero no me ven</button>
+          <button class="option-card" data-value="no-me-compran">Me ven pero no me compran</button>
+          <button class="option-card" data-value="sin-tiempo">No tengo tiempo de hacerlo bien</button>
+        </div>
+        <div class="step-nav">
+          <button class="btn-primary" disabled onclick="nextStep()">Siguiente →</button>
+          <button class="btn-back" onclick="prevStep()">← Atrás</button>
+        </div>
+      </div>
+
+      <!-- PREGUNTA 5 -->
+      <div class="step" data-step="5">
+        <p class="step-number">05 / 07</p>
+        <h2>¿Ya intentaste resolverlo de alguna forma?</h2>
+        <div class="options" role="radiogroup" aria-label="Intentos previos">
+          <button class="option-card" data-value="curso">Hice un curso/leí cosas</button>
+          <button class="option-card" data-value="contrate">Contraté a alguien y no funcionó</button>
+          <button class="option-card" data-value="solo">Lo intenté solo/a, me frustré</button>
+          <button class="option-card" data-value="recien">No, recién estoy buscando ayuda</button>
+        </div>
+        <div class="step-nav">
+          <button class="btn-primary" disabled onclick="nextStep()">Siguiente →</button>
+          <button class="btn-back" onclick="prevStep()">← Atrás</button>
+        </div>
+      </div>
+
+      <!-- PREGUNTA 6 -->
+      <div class="step" data-step="6">
+        <p class="step-number">06 / 07</p>
+        <h2>¿Cuál sería el resultado IDEAL si trabajáramos juntos en 90 días?</h2>
+        <textarea
+          class="textarea-input"
+          id="q6-input"
+          maxlength="300"
+          rows="3"
+          placeholder="Contame qué te haría sentir que valió la pena..."
+          aria-label="Resultado ideal"
+        ></textarea>
+        <p class="char-count"><span id="q6-count">0</span> / 300</p>
+        <div class="step-nav">
+          <button class="btn-primary" disabled onclick="nextStep()">Siguiente →</button>
+          <button class="btn-back" onclick="prevStep()">← Atrás</button>
+        </div>
+      </div>
+
+      <!-- PREGUNTA 7 — Datos de contacto -->
+      <div class="step" data-step="7">
+        <p class="step-number">07 / 07</p>
+        <h2>Para mandarte el diagnóstico, ¿cómo te contacto?</h2>
+
+        <div class="form-group">
+          <label class="form-label" for="q7-name">Nombre <span class="required">*</span></label>
+          <input type="text" class="text-input" id="q7-name" placeholder="Tu nombre" aria-required="true">
+          <p class="error-msg" id="err-name">Poné al menos 2 caracteres</p>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="q7-wsp">WhatsApp <span class="required">*</span></label>
+          <div class="input-with-prefix">
+            <span class="input-prefix">+54</span>
+            <input type="tel" id="q7-wsp" placeholder="11 1234 5678" aria-required="true" inputmode="numeric">
+          </div>
+          <p class="error-msg" id="err-wsp">Mínimo 10 dígitos, solo números</p>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="q7-ig">Instagram de tu negocio <span class="optional">(opcional)</span></label>
+          <div class="input-with-prefix">
+            <span class="input-prefix">@</span>
+            <input type="text" id="q7-ig" placeholder="tunegocio">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="q7-email">Email <span class="optional">(opcional, pero te re sirve)</span></label>
+          <input type="email" class="text-input" id="q7-email" placeholder="hola@tuemail.com">
+          <p class="error-msg" id="err-email">Poné un email válido</p>
+        </div>
+
+        <div class="step-nav">
+          <button class="btn-primary" onclick="submitForm()">Enviar diagnóstico →</button>
+          <button class="btn-back" onclick="prevStep()">← Atrás</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================
+     LOADING STATE (overlay)
+     ======================================================== -->
+<div class="loading-screen" id="loadingScreen" aria-live="polite" aria-hidden="true">
+  <div class="loader" role="status" aria-label="Enviando"></div>
+  <p class="loading-text">Procesando tu diagnóstico...</p>
+</div>
+
+<!-- ========================================================
+     SECCIÓN 4 — PANTALLA DE ÉXITO
+     ======================================================== -->
+<section class="success-section" id="successSection" aria-live="polite">
+  <div class="success-content">
+    <div class="success-check" aria-hidden="true">
+      <svg viewBox="0 0 24 24">
+        <polyline points="4,12 10,18 20,6"></polyline>
+      </svg>
+    </div>
+    <h2>¡Listo, <span id="successName">vos</span>!</h2>
+    <p class="success-subtitle">
+      En las próximas 24 horas te voy a mandar tu diagnóstico personalizado por WhatsApp.
+    </p>
+
+    <div class="success-summary">
+      <h3>Resumen de lo que me contaste</h3>
+      <div class="summary-row">
+        <p class="summary-label">Lo que ofrecés</p>
+        <p class="summary-value" id="summary-vende">—</p>
+      </div>
+      <div class="summary-row">
+        <p class="summary-label">Tu mayor frustración</p>
+        <p class="summary-value" id="summary-frustracion">—</p>
+      </div>
+      <div class="summary-row">
+        <p class="summary-label">Tu resultado ideal en 90 días</p>
+        <p class="summary-value" id="summary-ideal">—</p>
+      </div>
+    </div>
+
+    <a href="#" class="btn-secondary" id="wspBtn" target="_blank" rel="noopener">
+      Mandame un mensaje ahora por WhatsApp →
+    </a>
+
+    <p class="success-footer">
+      Mientras tanto, podés seguirme en Instagram → <a href="https://instagram.com/usuario" target="_blank" rel="noopener">@usuario</a>
+    </p>
+  </div>
+</section>
+
+<script>
+/* =========================================================
+   ESTADO Y CONFIGURACIÓN
+   ========================================================= */
+const STORAGE_KEY = 'diagnosticoIG_v1';
+const TOTAL_STEPS = 7;
+const WSP_NUMBER = '5491100000000'; // ← REEMPLAZAR con el número real
+const IG_USER = 'usuario'; // ← REEMPLAZAR con tu user de IG
+
+let currentStep = 1;
+const answers = {
+  q1_estado_cuenta: null,
+  q1_label: null,
+  q2_que_vende: '',
+  q3_horas: null,
+  q3_label: null,
+  q4_frustracion: null,
+  q4_label: null,
+  q5_intentos: null,
+  q5_label: null,
+  q6_resultado_ideal: '',
+  q7_nombre: '',
+  q7_whatsapp: '',
+  q7_instagram: '',
+  q7_email: '',
+  timestamp: null
+};
+
+/* =========================================================
+   PERSISTENCIA EN LOCALSTORAGE
+   ========================================================= */
+function saveProgress() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({
+      step: currentStep,
+      answers: answers
+    }));
+  } catch(e) { console.warn('No se pudo guardar progreso:', e); }
+}
+
+function loadProgress() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (!saved) return null;
+    return JSON.parse(saved);
+  } catch(e) { return null; }
+}
+
+function clearProgress() {
+  try { localStorage.removeItem(STORAGE_KEY); } catch(e) {}
+}
+
+/* =========================================================
+   NAVEGACIÓN ENTRE PASOS
+   ========================================================= */
+function showStep(n) {
+  document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+  const target = document.querySelector(`.step[data-step="${n}"]`);
+  if (target) target.classList.add('active');
+  currentStep = n;
+  updateProgress();
+  saveProgress();
+}
+
+function updateProgress() {
+  const pct = ((currentStep - 1) / TOTAL_STEPS) * 100;
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressLabel').textContent = `Pregunta ${currentStep} de ${TOTAL_STEPS}`;
+}
+
+function nextStep() {
+  if (currentStep < TOTAL_STEPS) {
+    showStep(currentStep + 1);
+    document.getElementById('form-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+function prevStep() {
+  if (currentStep > 1) {
+    showStep(currentStep - 1);
+    document.getElementById('form-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+function scrollToForm() {
+  document.getElementById('form-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+/* =========================================================
+   MANEJO DE OPCIONES (radio cards)
+   ========================================================= */
+function setupOptionCards() {
+  document.querySelectorAll('.step').forEach(step => {
+    const stepNum = parseInt(step.dataset.step);
+    const cards = step.querySelectorAll('.option-card');
+    const nextBtn = step.querySelector('.btn-primary');
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        cards.forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        const val = card.dataset.value;
+        const label = card.textContent.trim();
+
+        // Guardar según el paso
+        if (stepNum === 1) { answers.q1_estado_cuenta = val; answers.q1_label = label; }
+        if (stepNum === 3) { answers.q3_horas = val; answers.q3_label = label; }
+        if (stepNum === 4) { answers.q4_frustracion = val; answers.q4_label = label; }
+        if (stepNum === 5) { answers.q5_intentos = val; answers.q5_label = label; }
+
+        if (nextBtn) nextBtn.disabled = false;
+        saveProgress();
+      });
+    });
+  });
+}
+
+/* =========================================================
+   INPUTS DE TEXTO (Q2 y Q6 con contador, Q7 con validación)
+   ========================================================= */
+function setupTextInputs() {
+  // Q2
+  const q2 = document.getElementById('q2-input');
+  const q2Count = document.getElementById('q2-count');
+  const q2Btn = document.querySelector('.step[data-step="2"] .btn-primary');
+  q2.addEventListener('input', () => {
+    q2Count.textContent = q2.value.length;
+    answers.q2_que_vende = q2.value.trim();
+    q2Btn.disabled = answers.q2_que_vende.length < 2;
+    saveProgress();
+  });
+
+  // Q6
+  const q6 = document.getElementById('q6-input');
+  const q6Count = document.getElementById('q6-count');
+  const q6Btn = document.querySelector('.step[data-step="6"] .btn-primary');
+  q6.addEventListener('input', () => {
+    q6Count.textContent = q6.value.length;
+    answers.q6_resultado_ideal = q6.value.trim();
+    q6Btn.disabled = answers.q6_resultado_ideal.length < 5;
+    saveProgress();
+  });
+
+  // Q7 — capturar inputs en tiempo real
+  ['q7-name', 'q7-wsp', 'q7-ig', 'q7-email'].forEach(id => {
+    const el = document.getElementById(id);
+    el.addEventListener('input', () => {
+      if (id === 'q7-name') answers.q7_nombre = el.value.trim();
+      if (id === 'q7-wsp') {
+        // Solo números
+        el.value = el.value.replace(/\D/g, '');
+        answers.q7_whatsapp = el.value;
+      }
+      if (id === 'q7-ig') answers.q7_instagram = el.value.replace(/^@/, '').trim();
+      if (id === 'q7-email') answers.q7_email = el.value.trim();
+      saveProgress();
+    });
+  });
+}
+
+/* =========================================================
+   VALIDACIÓN DEL FORMULARIO FINAL
+   ========================================================= */
+function validateFinalStep() {
+  let ok = true;
+
+  // Nombre — mínimo 2 caracteres
+  const nameOk = answers.q7_nombre.length >= 2;
+  toggleError('err-name', !nameOk);
+  if (!nameOk) ok = false;
+
+  // WhatsApp — mínimo 10 dígitos, solo números
+  const wspOk = /^\d{10,}$/.test(answers.q7_whatsapp);
+  toggleError('err-wsp', !wspOk);
+  if (!wspOk) ok = false;
+
+  // Email — opcional, pero si hay algo debe ser válido
+  if (answers.q7_email.length > 0) {
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(answers.q7_email);
+    toggleError('err-email', !emailOk);
+    if (!emailOk) ok = false;
+  } else {
+    toggleError('err-email', false);
+  }
+
+  return ok;
+}
+
+function toggleError(id, show) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.classList.toggle('show', show);
+}
+
+/* =========================================================
+   ENVÍO DEL FORMULARIO
+   ========================================================= */
+function submitForm() {
+  if (!validateFinalStep()) return;
+
+  // Mostrar loader
+  const loading = document.getElementById('loadingScreen');
+  loading.classList.add('active');
+  loading.setAttribute('aria-hidden', 'false');
+
+  answers.timestamp = new Date().toISOString();
+
+  setTimeout(() => {
+    // Acá conectarías a un webhook / backend / Google Sheets / Airtable
+    console.log('📨 DIAGNÓSTICO ENVIADO:', JSON.stringify(answers, null, 2));
+
+    loading.classList.remove('active');
+    loading.setAttribute('aria-hidden', 'true');
+
+    showSuccess();
+    clearProgress();
+  }, 1500);
+}
+
+/* =========================================================
+   PANTALLA DE ÉXITO
+   ========================================================= */
+function showSuccess() {
+  // Ocultar form section
+  document.getElementById('form-section').style.display = 'none';
+  document.querySelector('.validation').style.display = 'none';
+  document.getElementById('hero').style.display = 'none';
+
+  // Llenar datos
+  document.getElementById('successName').textContent = answers.q7_nombre;
+  document.getElementById('summary-vende').textContent = answers.q2_que_vende || '—';
+  document.getElementById('summary-frustracion').textContent = answers.q4_label || '—';
+  document.getElementById('summary-ideal').textContent = answers.q6_resultado_ideal || '—';
+
+  // Armar link de WhatsApp con mensaje pre-armado
+  const msg = `Hola! Acabo de completar el diagnóstico, soy ${answers.q7_nombre}. Quería sumar un detalle...`;
+  const wspLink = `https://wa.me/${WSP_NUMBER}?text=${encodeURIComponent(msg)}`;
+  document.getElementById('wspBtn').href = wspLink;
+
+  // Mostrar
+  const success = document.getElementById('successSection');
+  success.classList.add('active');
+  success.scrollIntoView({ behavior: 'smooth' });
+}
+
+/* =========================================================
+   RETOMAR PROGRESO GUARDADO
+   ========================================================= */
+function checkSavedProgress() {
+  const saved = loadProgress();
+  if (!saved || saved.step === 1) return;
+
+  // Mostrar prompt
+  document.getElementById('resumePrompt').style.display = 'block';
+
+  // Guardar tmp para restaurar si dice que sí
+  window._savedProgress = saved;
+}
+
+function resumeProgress() {
+  const saved = window._savedProgress;
+  if (!saved) return;
+
+  // Restaurar respuestas
+  Object.assign(answers, saved.answers);
+
+  // Restaurar UI de cada paso
+  restoreUI();
+
+  // Ir al paso guardado
+  document.getElementById('resumePrompt').style.display = 'none';
+  showStep(saved.step);
+  scrollToForm();
+}
+
+function startOver() {
+  clearProgress();
+  document.getElementById('resumePrompt').style.display = 'none';
+  // Limpiar respuestas locales
+  Object.keys(answers).forEach(k => {
+    answers[k] = (typeof answers[k] === 'string') ? '' : null;
+  });
+}
+
+function restoreUI() {
+  // Q1
+  if (answers.q1_estado_cuenta) markSelected(1, answers.q1_estado_cuenta);
+  // Q2
+  if (answers.q2_que_vende) {
+    document.getElementById('q2-input').value = answers.q2_que_vende;
+    document.getElementById('q2-count').textContent = answers.q2_que_vende.length;
+    document.querySelector('.step[data-step="2"] .btn-primary').disabled = false;
+  }
+  // Q3
+  if (answers.q3_horas) markSelected(3, answers.q3_horas);
+  // Q4
+  if (answers.q4_frustracion) markSelected(4, answers.q4_frustracion);
+  // Q5
+  if (answers.q5_intentos) markSelected(5, answers.q5_intentos);
+  // Q6
+  if (answers.q6_resultado_ideal) {
+    document.getElementById('q6-input').value = answers.q6_resultado_ideal;
+    document.getElementById('q6-count').textContent = answers.q6_resultado_ideal.length;
+    document.querySelector('.step[data-step="6"] .btn-primary').disabled = false;
+  }
+  // Q7
+  if (answers.q7_nombre) document.getElementById('q7-name').value = answers.q7_nombre;
+  if (answers.q7_whatsapp) document.getElementById('q7-wsp').value = answers.q7_whatsapp;
+  if (answers.q7_instagram) document.getElementById('q7-ig').value = answers.q7_instagram;
+  if (answers.q7_email) document.getElementById('q7-email').value = answers.q7_email;
+}
+
+function markSelected(stepNum, value) {
+  const step = document.querySelector(`.step[data-step="${stepNum}"]`);
+  if (!step) return;
+  const card = step.querySelector(`.option-card[data-value="${value}"]`);
+  if (card) {
+    step.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+    card.classList.add('selected');
+    step.querySelector('.btn-primary').disabled = false;
+  }
+}
+
+/* =========================================================
+   INICIALIZACIÓN
+   ========================================================= */
+document.addEventListener('DOMContentLoaded', () => {
+  setupOptionCards();
+  setupTextInputs();
+  updateProgress();
+  checkSavedProgress();
+});
+</script>
+
+</body>
+</html>
